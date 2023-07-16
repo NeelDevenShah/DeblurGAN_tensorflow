@@ -30,5 +30,7 @@ def deblur_command(weight_path, input_dir, output_dir):
 
 
 if __name__ == "__main__":
-    deblur_command(weight_path='./generator_3_2811.h5',
+    header_file_address = './generator_3_15823.h5'
+
+    deblur_command(weight_path=header_file_address,
                    input_dir='../demo/input', output_dir='../demo/output/')
