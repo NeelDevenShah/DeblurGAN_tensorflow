@@ -5,12 +5,12 @@ from deblurgan.model import generator_model
 from deblurgan.utils import load_images, deprocess_image
 
 
-def test(batch_size):
+def test(batch_size, header_file_name):
     data = load_images('/kaggle/working/test', batch_size)
     y_test, x_test = data['B'], data['A']
     g = generator_model()
     g.load_weights(
-        '/kaggle/working/kaggle/working/training/715/generator_3_2811.h5')
+        '/kaggle/working/kaggle/working/training/715/'+header_file_name)
     generator_images = g.predict(x=x_test, batch_size=batch_size)
     generated = np.array([deprocess_image(img) for img in generator_images])
 
@@ -27,7 +27,9 @@ def test(batch_size):
 
 
 def test_command(batch_size):
-    return test(batch_size)
+    header_file_name = 'generator_3_15823.h5'
+
+    return test(batch_size, header_file_name)
 
 
 if __name__ == '__main__':

@@ -34,7 +34,8 @@ def res_block(input, filters, kernel_size=(3, 3), strides=(1, 1), use_dropout=Fa
     x = BatchNormalization()(x)
 
     merged = Add()([input, x])
-    return merged
+    output = Activation('relu')(merged)
+    return output
 
 
 def spatial_reflection_2d_padding(x, padding=((1, 1), (1, 1)), data_format=None):
